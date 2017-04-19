@@ -50,7 +50,7 @@ graduation project @ huxi 2017.4.18 python
     * w2vSenti单独使用时，acc达到单通道结果中的最高值，但是macroaveraged-recall和F1-average两项指标上相对平庸
     
     * glove&SSWE&w2vSenti作为三通道进行联合训练时，取得所有结果中最高的acc(63.5%),其混淆矩阵如下：
-    
+     ![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gss_plot_classify_report_test0.595.png)
    
   
 ### details:
