@@ -43,17 +43,28 @@ graduation project @ huxi 2017.4.18 python
   
   * 由此我们可以得出结论：
   
-    * glove&SSWE作为双通道训练在macroaveraged-recall和F1-average两项指标上取得了最好的结果，其混淆矩阵如下：
+    * glove&SSWE作为双通道训练在macroaveraged-recall和F1-average两项指标上取得了最好的结果，其混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gls_plot_classify_report.png)
     
-  ![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gls_plot_classify_report.png)
-  
-    * w2vSenti单独使用时，acc达到单通道结果中的最高值，但是macroaveraged-recall和F1-average两项指标上相对平庸
+    * w2vSenti单独使用时，acc达到单通道结果中的最高值，但是macroaveraged-recall和F1-average两项指标上相对平庸
     
-    * glove&SSWE&w2vSenti作为三通道进行联合训练时，取得所有结果中最高的acc(63.5%),其混淆矩阵如下：
-     ![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gss_plot_classify_report_test0.595.png)
+    * glove&SSWE&w2vSenti作为三通道进行联合训练时，取得所有结果中最高的acc(63.5%),其混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gss_plot_classify_report_test0.595.png)
    
   
 ### details:
-  <br>TODO:code上传并解释
+ <br>**数据来源**：我们选择了semeval17 task4的数据集进行训练和测试。这个数据集是现今在nlp情感分析领域中最有权威性的数据集之一。这个数据集由6000条标注好的twitter文本组成，每条文本的情感极性为{positive，negtive，neutral}中的一个极性。
+  
+  <br>**评价方法**：本次实验中我们采用了macroaveraged-recall，F1-average和acc三种指标来衡量。macroaveraged recall是近年由`Sebastiani F. An axiomatically derived measure for the evaluation of classification algorithms`提出的评判方法，也是semeval17官方评判算法性能的方法，计算方法为各个类别的recall的平均值。F1 average为各个类别的F1值平均值，acc为分类准确率。
+  
+  <br>**分类模型训练文本预处理**：用以分类模型的训练的文本，即来自semeval 2017 task4的6000条标注文本，其处理过程如下：
+
+>1. 分别提取文本和对应的标签
+>2. 将每一条文本中的停用词和标点符号去除，包括`via`和`RT`。
+>3. 将剩余的文本做tokenize，ie. 将句子进行分词
+>4. 将tokenize后的结果与所选择词向量的key值取交集，删去句子中在词向量key中不存在的词
+>5. 将取完交集后的词做成一个词典，并将句子中的词按照词典中的索引排列
+>>eg.`9725 10161 3449 13194 5505 11149`这种形式
+>6. 将数据进行随机打乱(shuffe)
+
+  <br>TODO:code上传并解释
   
       
