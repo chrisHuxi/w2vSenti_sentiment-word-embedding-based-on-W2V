@@ -10,7 +10,9 @@ graduation project @ huxi 2017.4.18 python
   
 ### outline:
   * 我们选用的数据集为[semeval2017 task4:Sentiment Analysis in Twitter](http://alt.qcri.org/semeval2017/task4/index.php?id=data-and-tools)
+  
   * 我们采用CNN和LSTM模型作为分类模型
+  
   * 我们比较了[glove](http://pan.baidu.com/s/1qX9uVTE)，[SSWE](http://pan.baidu.com/s/1jIoOFRK)，[W2V](http://pan.baidu.com/s/1bZ5TZg)三种模型:其中glove和SSWE为在twitter文本上训练好的词向量，W2V则是由我们自行收集数据，使用gensim工具包进行训练得到
   
   ```python
@@ -22,7 +24,8 @@ graduation project @ huxi 2017.4.18 python
   ```
   
   * 我们收集了1600万条带有emoji表情符的数据，并按照emoji表达的含义进行了分类，pos文本和neg文本各占800万，[数据地址](http://pan.baidu.com/s/1nv0TTeL)
-  * 在w2v词向量的基础上，我们继续利用emoji表情符作为标注信息，继续训练词向量，得到了[w2vSentiv词向量模型](http://pan.baidu.com/s/1nvI4NTv)
+  
+  * 在w2v词向量的基础上，我们继续利用emoji表情符作为标注信息，继续训练词向量，得到了[w2vSentiv词向量模型](http://pan.baidu.com/s/1nvI4NTv)
     
   ```python
   #w2vSenti模型使用以下代码加载
@@ -34,7 +37,7 @@ graduation project @ huxi 2017.4.18 python
   
   * 以上四个词向量作为输入，利用CNN和LSTM模型进行训练和分类，结果如下：
   
-  最后实验结果如下：
+  ![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/table3.PNG)
   
 
   <br>TODO:code上传并解释
