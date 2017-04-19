@@ -22,7 +22,20 @@ graduation project @ huxi 2017.4.18 python
   ```
   
   * 我们收集了1600万条带有emoji表情符的数据，并按照emoji表达的含义进行了分类，pos文本和neg文本各占800万，[数据地址](http://pan.baidu.com/s/1nv0TTeL)
+  * 在w2v词向量的基础上，我们继续利用emoji表情符作为标注信息，继续训练词向量，得到了[w2vSentiv词向量模型](http://pan.baidu.com/s/1nvI4NTv)
+    
+  ```python
+  #w2vSenti模型使用以下代码加载
+  import cPickle  as pickle
+  with open(r'w2vSenti.pkl','r') as file:
+    model_w2vSenti = pickle.load(file) #加载完后是一个dict数据结构，key为英文词(字符串)，value为np.array类型的向量
+  print(model_w2vSenti['bad'])#通过vec = model_w2vSenti['bad'] 进行访问
+  ```
   
-  <br>TODO:code上传并解释，emoji文本上传
+  * 以上四个词向量作为输入，利用CNN和LSTM模型进行训练和分类，结果如下：
+  最后实验结果如下：
+  
+
+  <br>TODO:code上传并解释
   
       
