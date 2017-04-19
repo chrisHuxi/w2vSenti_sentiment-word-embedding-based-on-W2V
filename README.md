@@ -28,11 +28,12 @@ graduation project @ huxi 2017.4.18 python
   #w2vSenti模型使用以下代码加载
   import cPickle  as pickle
   with open(r'w2vSenti.pkl','r') as file:
-    model_w2vSenti = pickle.load(file) #加载完后是一个dict数据结构，key为英文词(字符串)，value为np.array类型的向量
-  print(model_w2vSenti['bad'])#通过vec = model_w2vSenti['bad'] 进行访问
+    model_w2vSenti = pickle.load(file) #加载完后是一个dict数据结构，key为英文词(字符串)，value为np.array类型的向量
+  print(model_w2vSenti['bad'])#通过vec = model_w2vSenti['bad'] 进行访问
   ```
   
-  * 以上四个词向量作为输入，利用CNN和LSTM模型进行训练和分类，结果如下：
+  * 以上四个词向量作为输入，利用CNN和LSTM模型进行训练和分类，结果如下：
+  
   最后实验结果如下：
   
 
