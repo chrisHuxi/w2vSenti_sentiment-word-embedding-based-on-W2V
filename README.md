@@ -72,7 +72,7 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 <br>`注：训练分类模型的文本处理与训练词向量的文本略有不同，主要体现在在词向量文本中去除了长度<=9的句子，具体可参见代码`
 
 <br>**分类模型训练**：我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
-  具体参数可参见代码：
+  具体参数可参见[代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
   
   
       
