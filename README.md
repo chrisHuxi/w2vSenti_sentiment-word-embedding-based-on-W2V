@@ -59,7 +59,9 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
   * CNN的超参数众多，CNN起初是为了解决图像的分类问题而提出，最早在2014年由`Kim Y. Convolutional neural networks for sentence classification`中被应用在文本情感分类中，众多文献表明，如果能够熟练对CNN调参，往往能取得非常不错的结果。
   * LSTM相对来说更适合文本这一类的序列数据，且超参数较少，不需要大量的调参测试，在我们的github中有之前我们实现的[使用LSTM模型对中文文本进行分类的实验](https://github.com/chrisHuxi/LSTM-sentence-classification/blob/master/lstm_model.ipynb)中，LSTM经过少量调参即可得到远超过[CNN在同一任务中的结果](https://github.com/chrisHuxi/CNN-for-sentence-classification/blob/master/non-static_CNN_for_hotel.ipynb)。
 
-<br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下：
+<br>**词向量模型选择**：为了和我们的w2vSenti词向量进行对比，我们选择了。
+
+<br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下，详细可参见[代码:TODO]()：
 
 >1. 分别提取文本和对应的标签
 >2. 将每一条文本中的停用词和标点符号去除，包括`via`和`RT`。
@@ -73,12 +75,21 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 
 <br>**分类模型训练与测试**：
   我们将shuffle过的数据分成8:1:1的比例，即6000条文本中的4800条作为训练数据集（train set），600条作为开发集（valid set），最后600条作为测试集（test set）
+  <br>**注**：`在6000条数据中pos:neg:neu大概为3:1:2，所以在我们的测试集中大致比例也是如此，在下面的混淆矩阵中可以通过数量来区分类别`
+  
 * 我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
-  * CNN参数设置及测试结果可参见[CNN代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
-    * 最后结果acc：58.0±0.5 %，混淆矩阵如下：
-  * LSTM参数设置及测试结果可参见[LSTM代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/lstm-glove.ipynb)
-    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：
-      
+  * CNN参数设置及测试结果可参见[CNN-glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
+    * 最后结果acc：58.0±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_glove_plot_classify_report.png)
+  * LSTM参数设置及测试结果可参见[LSTM-glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/lstm-glove.ipynb)
+    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/lstm_glove_plot_classif_report%200.55.png)
+    
+* 然后我们使用SSWE词向量进行CNN和LSTM模型的训练。
+  * CNN参数设置及测试结果可参见[CNN-SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE/CNN-sswe.ipynb)
+    * 最后结果acc：59.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_glove_plot_classify_report.png)
+  * LSTM参数设置及测试结果可参见[LSTM-SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE/lstm-sswe.ipynb)
+    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：![]()
+
+      
       
       
 <br>TODO:code上传并解释
