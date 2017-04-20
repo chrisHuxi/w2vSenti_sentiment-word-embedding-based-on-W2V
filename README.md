@@ -61,7 +61,7 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 
 <br>**词向量模型选择**：为了和我们的w2vSenti词向量进行对比，我们选择了。
 
-<br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下，详细可参见[代码:TODO]()：
+<br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下，详细可参见[代码](https://github.com/chrisHuxi/sentiment-analysis-data-preprocessor)：
 
 >1. 分别提取文本和对应的标签
 >2. 将每一条文本中的停用词和标点符号去除，包括`via`和`RT`。
@@ -85,9 +85,9 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
     
 * 然后我们使用SSWE词向量进行CNN和LSTM模型的训练。
   * CNN参数设置及测试结果可参见[CNN-SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE/CNN-sswe.ipynb)
-    * 最后结果acc：59.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_glove_plot_classify_report.png)
+    * 最后结果acc：59.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_sswe-u_plot_classify_report.png)
   * LSTM参数设置及测试结果可参见[LSTM-SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE/lstm-sswe.ipynb)
-    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：![]()
+    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/lstm_sswe-u_plot_classif_report0.png)
 
       
       
