@@ -56,7 +56,7 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 <br>**评价方法**：本次实验中我们采用了macroaveraged-recall，F1-average和acc三种指标来衡量。macroaveraged recall是近年由`Sebastiani F. An axiomatically derived measure for the evaluation of classification algorithms`提出的评判方法，也是semeval17官方评判算法性能的方法，计算方法为各个类别的recall的平均值。F1 average为各个类别的F1值平均值，acc为分类准确率。
   
 <br>**分类模型选择**：CNN是目前在DL领域中最为常见的分类模型之一，LSTM则是更适合于文本处理的序列模型，两者相比各有所长。本次实验中我们对每一个词向量都在两种模型上训练，以证明实验结果的有效性。
-  * CNN的超参数众多，CNN起初是为了解决图像的分类问题而提出，最早在2014年由`Kim Y. Convolutional neural networks for sentence classification`中被应用在文本情感分类中，众多文献表明，如果能够熟练对CNN调参，往往能取得非常不错的结果。
+  * CNN的超参数众多，CNN起初是为了解决图像的分类问题而提出，最早在2014年由`Kim Y. Convolutional neural networks for sentence classification`中被应用在文本情感分类中，众多文献表明，如果能够熟练对CNN调参，往往能取得非常不错的结果。
   * LSTM相对来说更适合文本这一类的序列数据，且超参数较少，不需要大量的调参测试，在我们的github中有之前我们实现的[使用LSTM模型对中文文本进行分类的实验](https://github.com/chrisHuxi/LSTM-sentence-classification/blob/master/lstm_model.ipynb)中，LSTM经过少量调参即可得到远超过[CNN在同一任务中的结果](https://github.com/chrisHuxi/CNN-for-sentence-classification/blob/master/non-static_CNN_for_hotel.ipynb)。
 
 <br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下：
