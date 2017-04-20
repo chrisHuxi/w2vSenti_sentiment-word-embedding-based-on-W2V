@@ -67,13 +67,18 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 >4. 将tokenize后的结果与所选择词向量的key值取交集，删去句子中在词向量key中不存在的词
 >5. 将取完交集后的词做成一个词典，并将句子中的词按照词典中的索引排列
 >>eg.`9725 10161 3449 13194 5505 11149`这种形式
->6. 将数据进行随机打乱(shuffe)
+>6. 将数据进行随机打乱(shuffle)
 
 <br>`注：训练分类模型的文本处理与训练词向量的文本略有不同，主要体现在在词向量文本中去除了长度<=9的句子，具体可参见代码`
 
-<br>**分类模型训练**：我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
-  具体参数可参见[代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
-  
-  
+<br>**分类模型训练与测试**：
+  我们将shuffle过的数据分成8:1:1的比例，即6000条文本中的4800条作为训练数据集（train set），600条作为开发集（valid set），最后600条作为测试集（test set）
+* 我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
+  * CNN参数设置及测试结果可参见[CNN代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
+    * 最后结果acc：58.0±0.5 %，混淆矩阵如下：
+  * LSTM参数设置及测试结果可参见[LSTM代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/lstm-glove.ipynb)
+    * 最后结果acc：54.0±0.5 %，混淆矩阵如下：
       
+      
+      
 <br>TODO:code上传并解释
