@@ -76,7 +76,7 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 <br>**分类模型训练与测试**：
   我们将shuffle过的数据分成8:1:1的比例，即6000条文本中的4800条作为训练数据集（train set），600条作为开发集（valid set），最后600条作为测试集（test set）
   <br>**注**：`在6000条数据中pos:neg:neu大概为3:1:2，所以在我们的测试集中大致比例也是如此，在下面的混淆矩阵中可以通过数量来区分类别`
-  
+<br>`单个词向量模型测试`
 * 我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
   * CNN参数设置及测试结果可参见[CNN-glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove/CNN-glove.ipynb)
     * 最后结果acc：58.0±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_glove_plot_classify_report.png)
@@ -91,11 +91,15 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 
 * 再之后我们使用w2v词向量进行CNN和LSTM模型的训练。
   * CNN参数设置及测试结果可参见[CNN-w2v代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2v/CNN-w2v.ipynb)
-    * 最后结果acc：55.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vSenti_plot_classify_report0.60.png)
+    * 最后结果acc：55.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2v_my_plot_classify_report0.563.png)
   * LSTM参数设置及测试结果可参见[LSTM-w2v代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2v/lstm-w2v.ipynb)
     * 最后结果acc：58.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/lstm_w2c_my_plot_classify_report0.583.png)
 
-      
-      
-      
+* 最后后我们使用w2vSenti词向量进行CNN的训练。（因为我们的疏忽，在训练LSTM时未保存结果，所以暂时没有LSTM-w2vSenti模型的相关资料）
+  * CNN参数设置及测试结果可参见[CNN-w2vSenti代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2vSenti/CNN-w2vSenti-non_satic.ipynb)
+    * 最后结果acc：60±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vSenti_plot_classify_report0.60.png)
+
+**由上述结果可知**：在单独比较时，w2vSenti的acc达到了四个词向量中的最高值，而其在recall上表现较为平庸，仅与glove持平
+
+
 <br>TODO:code上传并解释
