@@ -1,5 +1,5 @@
 # w2vSenti_sentiment-word-embedding-based-on-W2V
-graduation project @ huxi 2017.4.18 python
+graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 
 ## w2vSenti:一种由w2v词向量初始化，通过引入情感信息进行再训练得到的词向量
 
@@ -51,11 +51,15 @@ graduation project @ huxi 2017.4.18 python
    
   
 ### details:
- <br>**数据来源**：我们选择了semeval17 task4的数据集进行训练和测试。这个数据集是现今在nlp情感分析领域中最有权威性的数据集之一。这个数据集由6000条标注好的twitter文本组成，每条文本的情感极性为{positive，negtive，neutral}中的一个极性。
+<br>**数据来源**：我们选择了semeval17 task4的数据集进行训练和测试。这个数据集是现今在nlp情感分析领域中最有权威性的数据集之一。这个数据集由6000条标注好的twitter文本组成，每条文本的情感极性为{positive,negtive,neutral}中的一个极性。
   
-  <br>**评价方法**：本次实验中我们采用了macroaveraged-recall，F1-average和acc三种指标来衡量。macroaveraged recall是近年由`Sebastiani F. An axiomatically derived measure for the evaluation of classification algorithms`提出的评判方法，也是semeval17官方评判算法性能的方法，计算方法为各个类别的recall的平均值。F1 average为各个类别的F1值平均值，acc为分类准确率。
+<br>**评价方法**：本次实验中我们采用了macroaveraged-recall，F1-average和acc三种指标来衡量。macroaveraged recall是近年由`Sebastiani F. An axiomatically derived measure for the evaluation of classification algorithms`提出的评判方法，也是semeval17官方评判算法性能的方法，计算方法为各个类别的recall的平均值。F1 average为各个类别的F1值平均值，acc为分类准确率。
   
-  <br>**分类模型训练文本预处理**：用以分类模型的训练的文本，即来自semeval 2017 task4的6000条标注文本，其处理过程如下：
+<br>**分类模型选择**：CNN是目前在DL领域中最为常见的分类模型之一，LSTM则是更适合于文本处理的序列模型，两者相比各有所长。本次实验中我们对每一个词向量都在两种模型上训练，以证明实验结果的有效性。
+  * CNN的超参数众多，CNN起初是为了解决图像的分类问题而提出，最早在2014年由`Kim Y. Convolutional neural networks for sentence classification`中被应用在文本情感分类中，众多文献表明，如果能够熟练对CNN调参，往往能取得非常不错的结果。
+  * LSTM相对来说更适合文本这一类的序列数据，且超参数较少，不需要大量的调参测试，在我们的github中有之前我们实现的[使用LSTM模型对中文文本进行分类的实验](https://github.com/chrisHuxi/LSTM-sentence-classification/blob/master/lstm_model.ipynb)中，LSTM经过少量调参即可得到远超过[CNN在同一任务中的结果](https://github.com/chrisHuxi/CNN-for-sentence-classification/blob/master/non-static_CNN_for_hotel.ipynb)。
+
+<br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下：
 
 >1. 分别提取文本和对应的标签
 >2. 将每一条文本中的停用词和标点符号去除，包括`via`和`RT`。
@@ -65,6 +69,11 @@ graduation project @ huxi 2017.4.18 python
 >>eg.`9725 10161 3449 13194 5505 11149`这种形式
 >6. 将数据进行随机打乱(shuffe)
 
-  <br>TODO:code上传并解释
+<br>`注：训练分类模型的文本处理与训练词向量的文本略有不同，主要体现在在词向量文本中去除了长度<=9的句子，具体可参见代码`
+
+<br>**分类模型训练**：我们首先在semeval17 task4的数据集上，使用glove词向量进行CNN和LSTM模型的训练。
+  具体参数可参见代码：
   
-      
+  
+      
+<br>TODO:code上传并解释
