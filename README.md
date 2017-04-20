@@ -89,6 +89,12 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
   * LSTM参数设置及测试结果可参见[LSTM-SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE/lstm-sswe.ipynb)
     * 最后结果acc：54.0±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/lstm_sswe-u_plot_classif_report0.png)
 
+* 再之后我们使用w2v词向量进行CNN和LSTM模型的训练。
+  * CNN参数设置及测试结果可参见[CNN-w2v代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2v/CNN-w2v.ipynb)
+    * 最后结果acc：55.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vSenti_plot_classify_report0.60.png)
+  * LSTM参数设置及测试结果可参见[LSTM-w2v代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2v/lstm-w2v.ipynb)
+    * 最后结果acc：58.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/lstm_w2c_my_plot_classify_report0.583.png)
+
       
       
       
