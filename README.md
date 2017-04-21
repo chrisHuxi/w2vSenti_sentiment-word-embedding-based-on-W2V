@@ -59,7 +59,7 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
   * CNN的超参数众多，CNN起初是为了解决图像的分类问题而提出，最早在2014年由`Kim Y. Convolutional neural networks for sentence classification`中被应用在文本情感分类中，众多文献表明，如果能够熟练对CNN调参，往往能取得非常不错的结果。
   * LSTM相对来说更适合文本这一类的序列数据，且超参数较少，不需要大量的调参测试，在我们的github中有之前我们实现的[使用LSTM模型对中文文本进行分类的实验](https://github.com/chrisHuxi/LSTM-sentence-classification/blob/master/lstm_model.ipynb)中，LSTM经过少量调参即可得到远超过[CNN在同一任务中的结果](https://github.com/chrisHuxi/CNN-for-sentence-classification/blob/master/non-static_CNN_for_hotel.ipynb)。
 
-<br>**词向量模型选择**：为了和我们的w2vSenti词向量进行对比，我们选择了。
+<br>**词向量模型选择**：为了和我们的w2vSenti词向量进行对比，我们选择了glove，SSWE，w2v，w2vSenti四种词向量作为对比。其中glove和w2v词向量是当前应用最多的词向量之二；SSWE是具有情感特征的词向量，由C&W词向量模型衍生而来（`Tang D, Wei F, Yang N, et al. Learning Sentiment-Specific Word Embedding f-or Twitter Sentiment Classification`）；w2vSenti是我们本次实验中训练出的新的词向量，由w2v模型衍生而来。
 
 <br>**文本预处理**：包括用以分类模型的训练的文本（即来自semeval 2017 task4的6000条标注文本），以及用以训练词向量的文本（即爬取的1600万条数据），其处理过程如下，详细可参见[代码](https://github.com/chrisHuxi/sentiment-analysis-data-preprocessor)：
 
@@ -102,5 +102,21 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
 
 **由上述结果可知**：在单独比较时，w2vSenti的acc达到了四个词向量中的最高值，而其在recall上表现较为平庸，仅与glove持平
 
+<br>**多通道词向量模型测试**
+* 在CNN模型中，我们可以输入多个通道进行联合训练，首先我们采用了glove&SSWE双通道的联合训练，并取得了所有实验中macroaveraged-recall和F1-average两项指标上最好的结果，acc也仅比第一的glove&SSWE&w2vSenti联合低0.5个百分点。
+  * 参数设置及测试结果可参见[CNN-glove&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove%26SSWE/CNN-gls-non_satic.ipynb)
+    * 最后结果acc：63±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gls_plot_classify_report.png)
 
-<br>TODO:code上传并解释
+* 除了上述两种词向量的联合之外，我们还实现了w2vSenti&glove，w2vSenti&SSWE双通道模型。
+  * [CNN-w2vSenti&glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove%26w2vSenti/CNN-w2vSentiUglove-non_satic.ipynb)
+    * 最后结果acc：62±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vSentiUglove_plot_classify_report0.608.png)
+    
+  * [CNN-w2vSenti&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE%26w2vSenti/CNN-w2vSentiUsswe-non_satic.ipynb)
+    * 最后结果acc：62±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vS%26sswe_plot_classify_report0.598.png)
+
+* 最后，我们还实现了w2vSenti&glove&SSWE三通道CNN模型。
+  * [CNN-w2vSenti&glove&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2vSenti%26glove%26SSWE/CNN-gss-non_satic%202.ipynb)
+    * 最后结果acc：63.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gss_plot_classify_report0.590.png)
+ 
+**由上述结果可知**：在与glove和SSWE作为双通道联合训练时，w2vSenti能有效的提升二者的各项指标，而三通道的训练结果表明，glove词向量和SSWE词向量的互补性最好，取得了两项指标效果最好的结果，而三通道实验中acc略有提升，而另外两项指标有所下降。
+
