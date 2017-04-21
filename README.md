@@ -108,14 +108,14 @@ graduation project @ huxi 2017.4.18 python TensorFlow-0.9
     * 最后结果acc：63±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gls_plot_classify_report.png)
 
 * 除了上述两种词向量的联合之外，我们还实现了w2vSenti&glove，w2vSenti&SSWE双通道模型。
-  * [CNN-w2vSenti&glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove%26w2vSenti/CNN-w2vSentiUglove-non_satic.ipynb)
+  * [CNN-w2vSenti&glove代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/glove%26w2vSenti/CNN-w2vSentiUglove-non_satic.ipynb)
     * 最后结果acc：62±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vSentiUglove_plot_classify_report0.608.png)
     
-  * [CNN-w2vSenti&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE%26w2vSenti/CNN-w2vSentiUsswe-non_satic.ipynb)
-    * 最后结果acc：62±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vS%26sswe_plot_classify_report0.598.png)
+  * [CNN-w2vSenti&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/SSWE%26w2vSenti/CNN-w2vSentiUsswe-non_satic.ipynb)
+     * 最后结果acc：62±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_w2vS%26sswe_plot_classify_report0.598.png)
 
 * 最后，我们还实现了w2vSenti&glove&SSWE三通道CNN模型。
-  * [CNN-w2vSenti&glove&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2vSenti%26glove%26SSWE/CNN-gss-non_satic%202.ipynb)
+  * [CNN-w2vSenti&glove&SSWE代码](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/code/w2vSenti%26glove%26SSWE/CNN-gss-non_satic%202.ipynb)
     * 最后结果acc：63.5±0.5 %，混淆矩阵如下：![](https://github.com/chrisHuxi/w2vSenti_sentiment-word-embedding-based-on-W2V/blob/master/img/cnn_gss_plot_classify_report0.590.png)
  
 **由上述结果可知**：在与glove和SSWE作为双通道联合训练时，w2vSenti能有效的提升二者的各项指标，而三通道的训练结果表明，glove词向量和SSWE词向量的互补性最好，取得了两项指标效果最好的结果，而三通道实验中acc略有提升，而另外两项指标有所下降。
